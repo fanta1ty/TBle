@@ -125,7 +125,7 @@ public enum TBleError: Error, LocalizedError {
     case characteristicDiscoveryFailed(service: CBService)
     case readFailed(characteristic: CBCharacteristic)
     case writeFailed(characteristic: CBCharacteristic)
-    case peripheralNotConnected(peripheral: CBPeripheral)
+    case peripheralNotConnected(peripheral: CBPeripheral?)
     case invalidData
     
     public var errorDescription: String? {
@@ -147,7 +147,7 @@ public enum TBleError: Error, LocalizedError {
         case .writeFailed(let characteristic):
             return "Failed to write to characteristic \(characteristic.uuid)"
         case .peripheralNotConnected(let peripheral):
-            return "Peripheral \(peripheral.name ?? "device") is not connected"
+            return "Peripheral \(peripheral?.name ?? "device") is not connected"
         case .invalidData:
             return "Invalid data format"
         }
